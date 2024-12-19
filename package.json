@@ -2,11 +2,14 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "Backend for projects portfolio",
+  "type": "module",
   "main": "dist/server.js",
   "scripts": {
     "start": "node dist/server.js",
-    "dev": "nodemon server.ts",
-    "build": "tsc"
+    "dev": "nodemon --exec ts-node server.ts",
+    "build": "tsc",
+    "prebuild": "rm -rf dist",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "cors": "^2.8.5",

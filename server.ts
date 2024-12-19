@@ -1,23 +1,27 @@
 import express from 'express';
 import cors from 'cors';
-import projectRoutes from './routes/projects';
+import projectRoutes from './routes/projects.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
+const allowedOrigins = [
+  'https://project-manage-frontend.netlify.app',
+  'http://localhost:5173',
+  'https://project-management-frontend-rho.vercel.app'
+];
+
 app.use(cors({
-  origin: ['https://project-management-frontend-rho.vercel.app', 'http://localhost:5173'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  origin: allowedOrigins,
   credentials: true,
-  allowedHeaders: ['Content-Type', 'Authorization']
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS']
 }));
+
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use('/api', projectRoutes);
-
 
 // Health check route
 app.get('/', (req, res) => {
