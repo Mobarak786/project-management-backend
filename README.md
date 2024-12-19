@@ -14,15 +14,6 @@ These instructions will help you get a copy of the project up and running on you
 
 ### project structure
 
-backend/
-├── src/
-│ ├── controllers/ # Request handlers
-│ ├── models/ # Database models
-│ ├── routes/ # API routes
-│ ├── middleware/ # Custom middleware
-│ ├── utils/ # Utility functions
-│ └── app.js # Main application file
-
 ## Tech Stack
 
 - Node.js
