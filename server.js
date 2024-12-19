@@ -6,17 +6,14 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
+//middleware for cors
 const corsOptions = {
-  origin: [
-    "https://project-manage-frontend.netlify.app/",
-    "http://localhost:5173",
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  headers: ["Content-Type", "Authorization"],
+  origin: "https://project-manage-frontend.netlify.app",
 };
+app.use(cors(corsOptions));
+
 // Middleware to parse JSON requests
 app.use(express.json());
-app.use(cors(corsOptions));
 
 // health check   route
 app.get("/", (req, res) => {
